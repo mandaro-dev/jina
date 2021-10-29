@@ -52,12 +52,15 @@ async def _create(flow: 'FlowModel', ports: Optional[PortMappings] = None):
 async def _update(
     kind: UpdateOperation,
     pod_name: str,
-    uses_with: Dict,
+    uses_with: str,
 ):
     """
 
     .. #noqa: DAR101
     .. #noqa: DAR201"""
+    import json
+
+    uses_with = json.loads(uses_with)
     try:
         return store.update(kind, pod_name, uses_with=uses_with)
     except ValueError as ex:

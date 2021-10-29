@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 from daemon.models import FlowModel
@@ -26,7 +27,7 @@ def test_flow_api(monkeypatch, partial_flow_client):
         params={
             'kind': UpdateOperation.ROLLING_UPDATE,
             'pod_name': 'dummy_executor',
-            'uses_with': {},
+            'uses_with': json.dumps({}),
         },
     )
 
